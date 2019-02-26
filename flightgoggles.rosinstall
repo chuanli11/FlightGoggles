@@ -8,7 +8,7 @@
 - git: {local-name: keyboard, uri: 'https://github.com/lrse/ros-keyboard.git'}
 
 # Rosbag playback node
-- git: {local-name: rosbaglive, uri: 'https://github.com/wu-robotics/wu_ros_tools.git', version: 'release/kinetic/rosbaglive'}
+- git: {local-name: rosbaglive, uri: 'https://github.com/wu-robotics/wu_ros_tools.git', version: 'release/mdelodic/rosbaglive'}
 
 # FlightGoggles nodes
 - git: {local-name: flightgoggles, uri: 'https://github.com/mit-fast/FlightGoggles.git'}
