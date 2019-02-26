@@ -1,5 +1,52 @@
 # FlightGoggles
 
+## Installation
+
+Install ROS Melodic
+
+```bash
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+sudo apt update
+sudo apt install ros-melodic-desktop-full
+```
+Install FlightGoggles
+
+```bash
+# Setup catkin workspace
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/
+catkin config --extend /opt/ros/melodic
+catkin init
+# Add workspace to bashrc.
+echo 'source ~/catkin_ws/devel/setup.bash' >> ~/.bashrc
+cd src
+wstool init
+# Install FlightGoggles nodes and deps from rosinstall file
+wstool merge https://raw.githubusercontent.com/chuanli11/FlightGoggles/master/flightgoggles.rosinstall
+wstool update
+cd ../
+# Install required libraries.
+rosdep install --from-paths src --ignore-src --rosdistro melodic -y
+# Install external libraries for flightgoggles_ros_bridge
+sudo apt install -y libzmqpp-dev libeigen3-dev
+# Install dependencies for flightgoggles renderer
+sudo apt install -y libvulkan1 mesa-vulkan-drivers vulkan-tools
+# Build nodes
+catkin build
+# Refresh workspace
+source ~/.bashrc
+```
+Run
+```bash
+# To run example environment with joystick/keyboard teleoperation
+roslaunch flightgoggles teleopExample.launch
+
+# See this link for control with keyboard
+https://github.com/mit-fast/FlightGoggles/wiki/Default-Controls
+```
+
+
 ## Documentation, Installation, & Usage Instructions
 Please refer to the [wiki-page](https://github.com/mit-fast/FlightGoggles/wiki) for code documentation, installation, usage instructions. An [FAQ](https://github.com/mit-fast/FlightGoggles/wiki/FAQ) is also available there.
 
