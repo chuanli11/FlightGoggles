@@ -1,8 +1,12 @@
 # FlightGoggles
 
-## Installation
+## Installation for Ubuntu 18.04 (Bionic)
+
+This is a fork of MIT-fast's FlightGoggles repo with an walkthrough about installing it on Ubuntu 18.04.
 
 Install ROS Melodic
+
+Do not use ROS Kinetic as it does not support Bionic.
 
 ```bash
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
@@ -11,6 +15,8 @@ sudo apt update
 sudo apt install ros-melodic-desktop-full
 ```
 Install FlightGoggles
+
+Copied from [here](https://github.com/mit-fast/FlightGoggles/wiki/installation-local). A few changes are made to work with melodic.
 
 ```bash
 # Setup catkin workspace
